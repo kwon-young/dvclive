@@ -13,12 +13,13 @@ def test_mmcv_hook(tmp_dir, mocker):
     work_dir = tmp_dir / "work_dir"
     runner = _build_demo_runner(str(work_dir))
 
-    log_config = dict(interval=1, hooks=[
-        dict(type="TextLoggerHook"),
-        dict(
-            type="DvcliveLoggerHook",
-            model_file=tmp_dir / "model.pth"),
-        ])
+    log_config = dict(
+        interval=1,
+        hooks=[
+            dict(type="TextLoggerHook"),
+            dict(type="DvcliveLoggerHook", model_file=tmp_dir / "model.pth"),
+        ],
+    )
     runner.register_logger_hooks(log_config)
 
     set_step = mocker.spy(dvclive.Live, "set_step")
@@ -39,12 +40,13 @@ def test_mmcv_model_file(tmp_dir, mocker):
     work_dir = tmp_dir / "work_dir"
     runner = _build_demo_runner(str(work_dir))
 
-    log_config = dict(interval=1, hooks=[
-        dict(type="TextLoggerHook"),
-        dict(
-            type="DvcliveLoggerHook",
-            model_file=tmp_dir / "model.pth"),
-        ])
+    log_config = dict(
+        interval=1,
+        hooks=[
+            dict(type="TextLoggerHook"),
+            dict(type="DvcliveLoggerHook", model_file=tmp_dir / "model.pth"),
+        ],
+    )
     runner.register_logger_hooks(log_config)
 
     save_checkpoint = mocker.spy(runner, "save_checkpoint")
