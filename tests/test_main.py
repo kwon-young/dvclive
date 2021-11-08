@@ -182,7 +182,7 @@ def test_require_step_update(tmp_dir, metric):
         dvclive.log(metric, 2.0)
 
 
-def test_custom_steps(tmp_dir, mocker):
+def test_custom_steps(tmp_dir):
     dvclive = Live("logs")
 
     steps = [0, 62, 1000]
